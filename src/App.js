@@ -12,9 +12,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/kaizntree_be_challenge_fe/" element={<LoginPage />} />
-        <Route path="/kaizntree_be_challenge_fe/signup" element={<SignupPage />} />
-        <Route path="/kaizntree_be_challenge_fe/dashboard" element={<DashboardPage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
 
       </Routes>
     </BrowserRouter>
