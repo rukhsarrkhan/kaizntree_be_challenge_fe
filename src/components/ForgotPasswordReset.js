@@ -1,38 +1,55 @@
 import { useState } from 'react';
-import { signupFields } from "../constants/formField";
+import { passwordResetFields } from "../constants/formField";
 import FormAction from "./FormAction";
+import FormExtra from "./FormExtra";
 import Input from "./Input";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const fields = signupFields;
+const fields = passwordResetFields;
 let fieldsState = {};
-
 fields.forEach(field => fieldsState[field.id] = '');
+let apiKey = "bjkabfk";
 
-export default function Signup() {
+export default function ForgotPasswordReset() {
     const navigate = useNavigate();
+    const { uidb64, token } = useParams();
 
-    const [signupState, setSignupState] = useState(fieldsState);
+    const [forgotPasswordState, setForgotPasswordState] = useState(fieldsState);
     const [loginError, setLoginError] = useState('');
 
-    const handleChange = (e) => setSignupState({ ...signupState, [e.target.id]: e.target.value });
+    const handleChange = (e) => {
+        setForgotPasswordState({ ...forgotPasswordState, [e.target.id]: e.target.value });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(signupState);
-        createAccount();
+        resetPassword();
     };
 
-    //handle Signup API Integration here
-    const createAccount = () => {
-        const endpoint = `http://127.0.0.1:8000/api/v1/auth/register/`;
+    //Handle Reset Password API Integration here
+    const resetPassword = () => {
+        const endpoint = `http://127.0.0.1:8000/api/v1/auth/set-new-password/`;
+        const data = {
+            'password': forgotPasswordState.password,
+            'confirm_password': forgotPasswordState.confirm_password,
+            'uidb64': uidb64,
+            'token': token
+        };
+
+        const formData = new FormData();
+        formData.append('password', forgotPasswordState.password);
+        formData.append('confirm_password', forgotPasswordState.confirm_password);
+        formData.append('uidb64', uidb64);
+        formData.append('token', token);
+
+
         fetch(endpoint,
             {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(signupState)
+                method: 'PATCH',
+                // headers: {
+                //     'Content-Type': 'multipart/form-data'
+                // },
+                body: formData
             }).then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,10 +60,10 @@ export default function Signup() {
                 navigate('/');
             })
             .catch(error => {
-                console.log('Signup failed:', error.message);
+                console.log('Password Reset failed:', error.message);
                 // Optionally, inform the user about the login failure and suggest next steps
                 // For example, updating the state to show an error message on the UI
-                setLoginError('Signup failed: Incorrect email or password.');
+                setLoginError('Password Reset failed, Try again.');
 
             });
 
@@ -54,13 +71,13 @@ export default function Signup() {
 
     return (
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="">
+            <div className="-space-y-px">
                 {
                     fields.map(field =>
                         <Input
                             key={field.id}
                             handleChange={handleChange}
-                            value={signupState[field.id]}
+                            value={forgotPasswordState[field.id]}
                             labelText={field.labelText}
                             labelFor={field.labelFor}
                             id={field.id}
@@ -74,7 +91,8 @@ export default function Signup() {
                 }
             </div>
             {loginError && <div className="text-red-500 text-sm mt-2">{loginError}</div>}
-            <FormAction handleSubmit={handleSubmit} text="Signup" />
+
+            <FormAction handleSubmit={handleSubmit} text="Reset Password" />
 
         </form>
     );

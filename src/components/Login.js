@@ -14,6 +14,7 @@ export default function Login() {
     const navigate = useNavigate();
 
     const [loginState, setLoginState] = useState(fieldsState);
+    const [loginError, setLoginError] = useState('');
 
     const handleChange = (e) => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value });
@@ -34,7 +35,12 @@ export default function Login() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(loginState)
-            }).then(response => response.json())
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 sessionStorage.setItem('session_token', data.access_token);
                 // const myValue = sessionStorage.getItem('myKey');
@@ -42,7 +48,13 @@ export default function Login() {
                 //sessionStorage.clear();
                 navigate('/dashboard');
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log('Login failed:', error.message);
+                // Optionally, inform the user about the login failure and suggest next steps
+                // For example, updating the state to show an error message on the UI
+                setLoginError('Login failed: Incorrect email or password.');
+
+            });
 
     };
 
@@ -67,7 +79,7 @@ export default function Login() {
                     )
                 }
             </div>
-
+            {loginError && <div className="text-red-500 text-sm mt-2">{loginError}</div>}
             <FormExtra />
             <FormAction handleSubmit={handleSubmit} text="Login" />
 
