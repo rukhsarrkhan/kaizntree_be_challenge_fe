@@ -22,14 +22,14 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        {!access_token && <Route path="/" element={<LandingPage />} />}
-        {!access_token && <Route path="/login" element={<LoginPage />} />}
-        {!access_token && <Route path="/signup" element={<SignupPage />} />}
-        {access_token && <Route path="/dashboard" element={<DashboardPage />} />}
-        {!access_token && <Route path="/forgot-password" element={<ForgotPasswordPage />} />}
-        {!access_token && <Route path="/forgot-password-success" element={<ForgotPasswordSuccessPage />} />}
-        {!access_token && <Route path='/api/v1/auth/password-reset-confirm/:uidb64/:token/' element={<ForgotPasswordResetPage />} />}
-        {access_token && <Route path="/logout" element={<LogoutPage />} />}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/forgot-password-success" element={<ForgotPasswordSuccessPage />} />
+        <Route path='/api/v1/auth/password-reset-confirm/:uidb64/:token/' element={<ForgotPasswordResetPage />} />
+        <Route path="/logout" element={<LogoutPage />} />
         // page not found page
       </Routes>
     </>
