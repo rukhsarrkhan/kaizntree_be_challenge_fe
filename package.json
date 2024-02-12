@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://rukhsarrkhan.github.io/kaizntree_be_challenge_fe/",
   "dependencies": {
+    "@heroicons/react": "^2.1.1",
+    "@material-tailwind/react": "^2.1.9",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -18,8 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

@@ -6,19 +6,18 @@ import {
 } from "react-router-dom";
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
+import DashboardPage from './pages/Dashboard';
 
 function App() {
   return (
-    <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/kaizntree_be_challenge_fe/" element={<LoginPage />} />
+        <Route path="/kaizntree_be_challenge_fe/signup" element={<SignupPage />} />
+        <Route path="/kaizntree_be_challenge_fe/dashboard" element={<DashboardPage />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
