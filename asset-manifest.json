@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/kaizntree_be_challenge_fe/static/css/main.01ad9c20.css",
-    "main.js": "/kaizntree_be_challenge_fe/static/js/main.45152051.js",
+    "main.js": "/kaizntree_be_challenge_fe/static/js/main.b92506a3.js",
     "static/js/592.4b2902e7.chunk.js": "/kaizntree_be_challenge_fe/static/js/592.4b2902e7.chunk.js",
     "index.html": "/kaizntree_be_challenge_fe/index.html",
     "main.01ad9c20.css.map": "/kaizntree_be_challenge_fe/static/css/main.01ad9c20.css.map",
-    "main.45152051.js.map": "/kaizntree_be_challenge_fe/static/js/main.45152051.js.map",
+    "main.b92506a3.js.map": "/kaizntree_be_challenge_fe/static/js/main.b92506a3.js.map",
     "592.4b2902e7.chunk.js.map": "/kaizntree_be_challenge_fe/static/js/592.4b2902e7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.01ad9c20.css",
-    "static/js/main.45152051.js"
+    "static/js/main.b92506a3.js"
   ]
 }
