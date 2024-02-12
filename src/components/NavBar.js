@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { MdFace2 } from "react-icons/md";
 
 const NavBar = () => {
     const [nav, setNav] = useState(false);
@@ -12,41 +11,52 @@ const NavBar = () => {
         {
             id: 1,
             link: "login",
+            authRequired: false,
         },
         {
             id: 2,
             link: "signup",
+            authRequired: false,
+
         },
         {
             id: 3,
             link: "dashboard",
+            authRequired: true,
+
         },
         {
             id: 4,
             link: "logout",
+            authRequired: true,
+
         }
     ];
 
+    const filteredLinks = links.filter(link => link.authRequired === !!access_token);
+
+
     return (
         <div className="flex justify-between items-center h-24  w-full mx-auto px-4 text-white bg-black fixed top-0 left-0 right-0 z-50">
-            <div>
-                <div className="flex justify-center">
+            <div className="flex justify-center">
+                <Link to="/">
                     <img
                         alt=""
-                        className="h-14 w-14"
-                        src="https://ik.imagekit.io/pibjyepn7p9/Lilac_Navy_Simple_Line_Business_Logo_CGktk8RHK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1649962071315" />
-                </div>
+                        className="h-14 w-14 cursor-pointer" // Added cursor-pointer for visual feedback
+                        src="https://ik.imagekit.io/pibjyepn7p9/Lilac_Navy_Simple_Line_Business_Logo_CGktk8RHK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1649962071315"
+                    />
+                </Link>
             </div>
 
             <ul className="hidden md:flex">
-                {links.map(({ id, link }) => (
+                {filteredLinks.map(({ id, link }) => (
                     <li
                         key={id}
                         className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200"
                     >
-                        {access_token && <Link to={link} smooth duration={500}>
+                        <Link to={link} smooth duration={500}>
                             {link}
-                        </Link>}
+                        </Link>
                     </li>
                 ))}
             </ul>
