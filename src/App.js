@@ -1,8 +1,9 @@
+import React, { useEffect } from 'react';
+
 import './App.css';
 import {
-  BrowserRouter,
   Routes,
-  Route,
+  Route, useNavigate
 } from "react-router-dom";
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
@@ -17,6 +18,23 @@ import LogoutPage from './pages/LogoutPage';
 
 function App() {
   const access_token = sessionStorage.getItem('access_token');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      // Clear session storage
+      sessionStorage.clear();
+
+      alert("You have been logged out.");
+
+      // Redirect to login page
+      navigate('/login');
+    }, 600000); // 600,000  milliseconds = 10 minutes
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [navigate]);
 
   return (
     <>
