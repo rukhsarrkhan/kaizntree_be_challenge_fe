@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { signupFields } from "../constants/formField";
 import FormAction from "./FormAction";
 import Input from "./Input";
+import { useNavigate } from 'react-router-dom';
 
 const fields = signupFields;
 let fieldsState = {};
@@ -9,6 +10,8 @@ let fieldsState = {};
 fields.forEach(field => fieldsState[field.id] = '');
 
 export default function Signup() {
+    const navigate = useNavigate();
+
     const [signupState, setSignupState] = useState(fieldsState);
 
     const handleChange = (e) => setSignupState({ ...signupState, [e.target.id]: e.target.value });
@@ -21,6 +24,19 @@ export default function Signup() {
 
     //handle Signup API Integration here
     const createAccount = () => {
+        const endpoint = `http://127.0.0.1:8000/api/v1/auth/register/`;
+        fetch(endpoint,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(signupState)
+            }).then(response => response.json())
+            .then(data => {
+                navigate('/kaizntree_be_challenge_fe/');
+            })
+            .catch(error => console.log(error));
 
     };
 

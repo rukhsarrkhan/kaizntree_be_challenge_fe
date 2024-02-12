@@ -3,6 +3,7 @@ import { loginFields } from "../constants/formField";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
+import { useNavigate } from 'react-router-dom';
 
 const fields = loginFields;
 let fieldsState = {};
@@ -10,6 +11,8 @@ fields.forEach(field => fieldsState[field.id] = '');
 let apiKey = "bjkabfk";
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const [loginState, setLoginState] = useState(fieldsState);
 
     const handleChange = (e) => {
@@ -23,19 +26,21 @@ export default function Login() {
 
     //Handle Login API Integration here
     const authenticateUser = () => {
-
-
-        const endpoint = `https://api.loginradius.com/identity/v2/auth/login?apikey=${apiKey}`;
+        const endpoint = `http://127.0.0.1:8000/api/v1/auth/login/`;
         fetch(endpoint,
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(loginFields)
+                body: JSON.stringify(loginState)
             }).then(response => response.json())
             .then(data => {
-                //API Success from LoginRadius Login API
+                sessionStorage.setItem('session_token', data.access_token);
+                // const myValue = sessionStorage.getItem('myKey');
+                //sessionStorage.removeItem('myKey');
+                //sessionStorage.clear();
+                navigate('/kaizntree_be_challenge_fe/dashboard');
             })
             .catch(error => console.log(error));
 
