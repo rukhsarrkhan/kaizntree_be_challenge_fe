@@ -4,12 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter as Router } from "react-router-dom";
-const basename = process.env.PUBLIC_URL;
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router basename={basename}>
+  <Router basename="/kaizntree_be_challenge_fe">
     <App />
   </Router>
 );
