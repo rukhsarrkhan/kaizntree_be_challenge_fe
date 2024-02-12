@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kaizntree_be_challenge_fe/static/css/main.7e255e6d.css",
-    "main.js": "/kaizntree_be_challenge_fe/static/js/main.2ee20c58.js",
+    "main.css": "/kaizntree_be_challenge_fe/static/css/main.1b7508be.css",
+    "main.js": "/kaizntree_be_challenge_fe/static/js/main.8cbec544.js",
     "static/js/592.4b2902e7.chunk.js": "/kaizntree_be_challenge_fe/static/js/592.4b2902e7.chunk.js",
     "index.html": "/kaizntree_be_challenge_fe/index.html",
-    "main.7e255e6d.css.map": "/kaizntree_be_challenge_fe/static/css/main.7e255e6d.css.map",
-    "main.2ee20c58.js.map": "/kaizntree_be_challenge_fe/static/js/main.2ee20c58.js.map",
+    "main.1b7508be.css.map": "/kaizntree_be_challenge_fe/static/css/main.1b7508be.css.map",
+    "main.8cbec544.js.map": "/kaizntree_be_challenge_fe/static/js/main.8cbec544.js.map",
     "592.4b2902e7.chunk.js.map": "/kaizntree_be_challenge_fe/static/js/592.4b2902e7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e255e6d.css",
-    "static/js/main.2ee20c58.js"
+    "static/css/main.1b7508be.css",
+    "static/js/main.8cbec544.js"
   ]
 }
