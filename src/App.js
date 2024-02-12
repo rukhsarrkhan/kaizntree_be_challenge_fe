@@ -7,17 +7,19 @@ import {
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
 import DashboardPage from './pages/Dashboard';
+import Navbar from './components/NavBar';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
 
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
