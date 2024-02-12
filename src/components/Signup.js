@@ -40,7 +40,7 @@ export default function Signup() {
                 return response.json();
             })
             .then(data => {
-                navigate('/');
+                navigate('/login');
             })
             .catch(error => {
                 console.log('Signup failed:', error.message);

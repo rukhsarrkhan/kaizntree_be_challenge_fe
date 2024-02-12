@@ -42,7 +42,9 @@ export default function Login() {
                 return response.json();
             })
             .then(data => {
-                sessionStorage.setItem('session_token', data.access_token);
+                sessionStorage.setItem('access_token', data.access_token);
+                sessionStorage.setItem('refresh_token', data.refresh_token);
+
                 // const myValue = sessionStorage.getItem('myKey');
                 //sessionStorage.removeItem('myKey');
                 //sessionStorage.clear();

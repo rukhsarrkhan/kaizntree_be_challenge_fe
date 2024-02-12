@@ -57,7 +57,7 @@ export default function ForgotPasswordReset() {
                 return response.json();
             })
             .then(data => {
-                navigate('/');
+                navigate('/login');
             })
             .catch(error => {
                 console.log('Password Reset failed:', error.message);

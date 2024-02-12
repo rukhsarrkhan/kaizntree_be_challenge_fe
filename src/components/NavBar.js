@@ -5,7 +5,9 @@ import { MdFace2 } from "react-icons/md";
 
 const NavBar = () => {
     const [nav, setNav] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
+    const access_token = sessionStorage.getItem('access_token');
     const links = [
         {
             id: 1,
@@ -42,9 +44,9 @@ const NavBar = () => {
                         key={id}
                         className="px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 duration-200"
                     >
-                        <Link to={link} smooth duration={500}>
+                        {access_token && <Link to={link} smooth duration={500}>
                             {link}
-                        </Link>
+                        </Link>}
                     </li>
                 ))}
             </ul>
