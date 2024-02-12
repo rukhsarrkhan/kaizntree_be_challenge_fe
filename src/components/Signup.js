@@ -34,7 +34,7 @@ export default function Signup() {
                 body: JSON.stringify(signupState)
             }).then(response => response.json())
             .then(data => {
-                navigate('/kaizntree_be_challenge_fe/');
+                navigate('/');
             })
             .catch(error => console.log(error));
 

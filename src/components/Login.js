@@ -40,7 +40,7 @@ export default function Login() {
                 // const myValue = sessionStorage.getItem('myKey');
                 //sessionStorage.removeItem('myKey');
                 //sessionStorage.clear();
-                navigate('/kaizntree_be_challenge_fe/dashboard');
+                navigate('/dashboard');
             })
             .catch(error => console.log(error));
 
